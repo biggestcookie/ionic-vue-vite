@@ -34,6 +34,15 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
+  scrollBehavior: (to) =>
+    to.hash
+      ? { el: to.hash, behavior: "smooth" }
+      : { top: 0, left: 0, behavior: "smooth" },
+});
+
+router.beforeEach((to, _, next) => {
+  document.title = to.meta?.title ? `FitBoard: ${to.meta.title}` : "FitBoard";
+  next();
 });
 
 export { router };

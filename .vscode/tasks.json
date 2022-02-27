@@ -6,6 +6,10 @@
       "detail": "vite",
       "type": "npm",
       "script": "dev",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
       "presentation": {
         "echo": true,
         "reveal": "always",
