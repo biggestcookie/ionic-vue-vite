@@ -7,22 +7,12 @@
           <ion-icon :icon="triangle" />
           <ion-label>Tab 1</ion-label>
         </ion-tab-button>
-
-        <ion-tab-button tab="tab2" href="/tabs/tab2">
-          <ion-icon :icon="ellipse" />
-          <ion-label>Tab 2</ion-label>
-        </ion-tab-button>
-
-        <ion-tab-button tab="tab3" href="/tabs/tab3">
-          <ion-icon :icon="square" />
-          <ion-label>Tab 3</ion-label>
-        </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
   </ion-page>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import {
   IonIcon,
   IonLabel,
@@ -32,26 +22,5 @@ import {
   IonTabButton,
   IonTabs,
 } from "@ionic/vue";
-import { ellipse, square, triangle } from "ionicons/icons";
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  name: "TabsPage",
-  components: {
-    IonLabel,
-    IonTabs,
-    IonTabBar,
-    IonTabButton,
-    IonIcon,
-    IonPage,
-    IonRouterOutlet,
-  },
-  setup() {
-    return {
-      ellipse,
-      square,
-      triangle,
-    };
-  },
-});
+import { triangle } from "ionicons/icons";
 </script>
