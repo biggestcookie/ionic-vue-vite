@@ -3,11 +3,12 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "vue-cli-service test:e2e",
-    "lint": "vue-cli-service lint"
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "serve": "vite preview",
+    "lint:fix": "eslint ./ --ext .jsx,.js,.ts,.tsx,.vue --quiet --fix --ignore-path ./.gitignore",
+    "lint:format": "prettier --loglevel warn --write \"./**/*.{js,jsx,ts,tsx,vue,css,md,json}\" ",
+    "lint": "npm run lint:format && npm run lint:fix"
   },
   "dependencies": {
     "@capacitor/app": "1.1.0",
@@ -17,32 +18,78 @@
     "@capacitor/status-bar": "1.0.8",
     "@ionic/vue": "^6.0.0",
     "@ionic/vue-router": "^6.0.0",
-    "core-js": "^3.6.5",
-    "vue": "^3.2.21",
+    "vue": "^3.2.26",
     "vue-router": "^4.0.12"
   },
   "devDependencies": {
     "@capacitor/cli": "3.4.1",
-    "@types/jest": "^27.0.2",
     "@typescript-eslint/eslint-plugin": "^5.6.0",
     "@typescript-eslint/parser": "^5.6.0",
-    "@vue/cli-plugin-babel": "~5.0.0-rc.1",
-    "@vue/cli-plugin-e2e-cypress": "~5.0.0-rc.1",
-    "@vue/cli-plugin-eslint": "~5.0.0-rc.1",
-    "@vue/cli-plugin-router": "~5.0.0-rc.1",
-    "@vue/cli-plugin-typescript": "~5.0.0-rc.1",
-    "@vue/cli-plugin-unit-jest": "~5.0.0-rc.1",
-    "@vue/cli-service": "~5.0.0-rc.1",
-    "@vue/eslint-config-typescript": "^9.1.0",
-    "@vue/test-utils": "^2.0.0-rc.16",
-    "@vue/vue3-jest": "^27.0.0-alpha.3",
-    "babel-jest": "^27.3.1",
-    "cypress": "^8.7.0",
-    "eslint": "^8.4.1",
+    "@vitejs/plugin-vue": "^2.0.1",
+    "eslint": "^8.10.0",
+    "eslint-config-prettier": "^8.4.0",
     "eslint-plugin-vue": "^8.2.0",
-    "jest": "^27.3.1",
-    "ts-jest": "^27.0.7",
-    "typescript": "^4.3.5"
+    "prettier": "^2.5.1",
+    "sass": "^1.45.2",
+    "typescript": "^4.5.4",
+    "vite": "^2.7.10",
+    "vue-tsc": "^0.30.2"
   },
-  "description": "An Ionic project"
+  "description": "An Ionic project",
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:vue/vue3-essential",
+      "prettier"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "*.vue"
+        ],
+        "parser": "vue-eslint-parser",
+        "parserOptions": {
+          "parser": "@typescript-eslint/parser"
+        }
+      }
+    ],
+    "rules": {
+      "@typescript-eslint/explicit-module-boundary-types": "off",
+      "@typescript-eslint/no-non-null-assertion": "off",
+      "@typescript-eslint/no-empty-interface": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        {
+          "argsIgnorePattern": "^_",
+          "varsIgnorePattern": "^_"
+        }
+      ],
+      "@typescript-eslint/ban-types": "off",
+      "vue/no-deprecated-slot-attribute": "off",
+      "no-console": "warn",
+      "no-debugger": "warn"
+    },
+    "globals": {
+      "defineProps": "readonly",
+      "defineEmits": "readonly",
+      "defineExpose": "readonly",
+      "withDefaults": "readonly"
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
 }
