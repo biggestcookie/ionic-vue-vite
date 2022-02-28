@@ -1,7 +1,0 @@
-{
-  "name": "fitboard",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "vue"
-}
