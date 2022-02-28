@@ -33,7 +33,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, _, next) => {
-  document.title = to.meta?.title ? `FitBoard: ${to.meta.title}` : "FitBoard";
+  document.title = `Ionic App ${to.meta.title ?? ""}`;
   next();
 });
 
